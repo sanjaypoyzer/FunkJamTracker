@@ -4,7 +4,8 @@ var WebSocketServer = require('ws').Server,
     app = express();
 
 app.use(express.logger());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname));
+app.use(express.directory(__dirname));
 
 var server = http.createServer(app);
 server.listen(8080);
