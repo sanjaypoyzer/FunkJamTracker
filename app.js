@@ -34,7 +34,7 @@ $(document).ready(function(){
      var notes = el.find(".scale").data("notes");
      copyHelper = el.clone().insertAfter(el);
      copyHelper.find(".scale").data("notes",notes);
-     el.find(".scale").attr("data-notes",notes);
+     el.find(".scale").attr("data-notes",JSON.stringify(notes));
      return el;
     },
     stop: function() {
@@ -105,7 +105,7 @@ $(document).ready(function(){
 });
 
 var bpm, previousTime, startTime;
-bpm = 100;
+bpm = 120;
 var beatLength = 60000 / bpm;
 var measureTime = beatLength * 16;
 
@@ -177,7 +177,11 @@ function startBeat(measure, beat){
       var audio = $(this).find("audio");
 
       for (var i = 0; i < beatNotes.length; i++) {
-        audio[beatNotes[i]].play();
+        if(audio){
+          console.log(beatNotes[i]);
+          audio[beatNotes[i]].play();
+        }
+
       }
     });
   }

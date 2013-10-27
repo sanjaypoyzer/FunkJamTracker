@@ -12,7 +12,6 @@ body {
   width: 200px;
   position: absolute;
   cursor: move;
-
 }
 
 .new-cards .ui-sortable-placeholder {
@@ -20,6 +19,9 @@ body {
 }
 
 .new-card  {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  
   background: #309bd8;
   padding: 12px 10px;
   margin-bottom: 5px;
@@ -74,16 +76,17 @@ body {
 }
 
 .tracker .row-ui {
-
   float: left;
 }
 
 .tracker .row-ui a {
   color: white;
-  opacity: .5;
+  opacity: .3;
   display: block;
   text-decoration: none;
   padding: 5px;
+  position: relative;
+  top: 30px;
 }
 
 .tracker .row-ui a:hover {
@@ -104,13 +107,20 @@ body {
   height: 100%;
   position: relative;
   padding: 10px;
+  text-align: center;
+  padding: 30px 0;
   cursor: move;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box; 
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-bottom: solid 2px #1b75a8;
 }
 
 .bottom-ui {
-  padding: 10px;
+  position: absolute;
+  bottom: -30px;
+
 }
 
 .add-row {
