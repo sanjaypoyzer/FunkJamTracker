@@ -36,6 +36,10 @@ var db = [
   }
 ];
 
+app.options('/data', function(req, res) {
+  res.set('Access-Control-Allow-Origin', '*');
+});
+
 app.post('/data', express.urlencoded(), function(req, res) {
   db = req.body;
   res.send(200);
