@@ -27,8 +27,9 @@ $(document).ready(function(){
   });
 
   //Delete Card
-  $(".card").on("click",".delete-card", function(){
+  $(".tracker").on("click",".delete-card", function(){
     $(this).closest(".card").remove();
+    console.log("remove");
   });
 
   //Delete Card
