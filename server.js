@@ -7,7 +7,7 @@ app.use(express.static(__dirname));
 app.use(express.directory(__dirname));
 
 var server = http.createServer(app);
-server.listen(8080);
+server.listen(process.env.PORT || 8080);
 console.log('Listening on http://localhost:8080');
 
 var db = [
