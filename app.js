@@ -1,4 +1,12 @@
+
 $(document).ready(function(){
+
+
+  
+  for(var k = 0; k < 6; k++ ){
+    var row = $(".row:first-child").clone();
+    $(".tracker").append(row);
+  }
 
   jQuery.getJSON("/data",function(data){
     for(var i = 0; i < data.length ; i++) {
@@ -18,13 +26,20 @@ $(document).ready(function(){
 
   $(".new-cards").sortable({
     connectWith : ".tracker .cell",
+    start: function(e, ui) {
+      var data = ui.item.find(".scale").data("notes");
+      var name = ui.item.find("h1").text();
+    },
     helper: function(e,el) {
-           copyHelper= el.clone().insertAfter(el);
-           return el.clone();
-       },
-       stop: function() {
-           copyHelper && copyHelper.remove();
-       }
+     var notes = el.find(".scale").data("notes");
+     copyHelper = el.clone().insertAfter(el);
+     copyHelper.find(".scale").data("notes",notes);
+     el.find(".scale").attr("data-notes",notes);
+     return el;
+    },
+    stop: function() {
+      copyHelper && copyHelper.remove();
+    }
   });
 
 
@@ -153,6 +168,11 @@ function startBeat(measure, beat){
     cards.each(function(){
       var notes = $(this).find(".scale").data("notes");
       var audio = $(this).find("audio");
+
+      if (!notes) {
+        return;
+      }
+
       var beatNotes = notes[beat-1];
       var audio = $(this).find("audio");
 
