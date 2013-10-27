@@ -59,7 +59,8 @@ body {
 
 .tracker .row {
   position: relative;
-  height: 80px;
+  height: 84px;
+
 }
 
 .tracker .cell {
