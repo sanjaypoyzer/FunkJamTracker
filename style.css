@@ -3,15 +3,23 @@
 }
 
 body {
-  padding: 30px;
-  background: #222;
+
+  padding: 10px  0 0 0;
+  background: #191E23;
   position: relative;
+  margin: 0;
 }
 
 .new-cards {
   width: 200px;
   position: absolute;
   cursor: move;
+  background: #212B34;
+  padding: 10px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
 }
 
 .new-cards .ui-sortable-placeholder {
@@ -58,7 +66,7 @@ body {
 
 .tracker-wrapper {
   position: relative;
-  margin-left: 220px;
+  margin-left: 230px;
   width: (100% - 220px);
 }
 
@@ -73,11 +81,11 @@ body {
 }
 
 .tracker .cell {
-  background: #444;
+  background: #31363d;
   height: 80px;
   float: left;
   position: relative;
-  width: 19%;
+  width: 22%;
   border-right: solid 4px #222;
   border-bottom: solid 2px #222;
 }
@@ -101,7 +109,7 @@ body {
 }
 
 .tracker .drop-hover {
-  background: #666;
+  background: #3d434c;
 }
 
 .ui-sortable-placeholder {
@@ -132,9 +140,14 @@ body {
 }
 
 .add-row {
+  opacity: .2;
   color: white;
   font-family: Helvetica;
   text-decoration: none;
+}
+
+.add-row:hover {
+  opacity: 1;
 }
 
 .delete-card {
