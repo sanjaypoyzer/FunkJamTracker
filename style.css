@@ -3,7 +3,6 @@
 }
 
 body {
-
   padding: 10px  0 0 0;
   background: #191E23;
   position: relative;
@@ -28,6 +27,7 @@ h1.title {
   top: 66px;
   bottom: 0px;
   left: 0px;
+  border-radius: 0 3px 3px 0;
 }
 
 .new-cards .ui-sortable-placeholder {
@@ -114,7 +114,6 @@ h1.title {
   position: relative;
   top: 27px;
   left: 5px;
-  
 }
 
 .tracker .row-ui a:hover {
