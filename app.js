@@ -103,7 +103,7 @@ $(document).ready(function(){
 });
 
 var bpm, previousTime, startTime;
-bpm = 120;
+bpm = 480;
 var beatLength = 60000 / bpm;
 var measureTime = beatLength * 16;
 
