@@ -5,7 +5,7 @@ $(document).ready(function(){
       var currCard = data[i];
       var newCard = $("<div class='new-card'><h1></h1><div class='scale'></div><a class='delete-card' href='#'>X</a></div>");
       for(var j = 0; j < currCard["audioClips"].length; j++) {
-        var audioTag =  $("<audio>");
+        var audioTag =  $("<audio preload='auto'>");
         audioTag.attr("src",currCard["audioClips"][j]);
         newCard.find(".scale").append(audioTag);
       }
@@ -65,22 +65,18 @@ $(document).ready(function(){
       $(this).removeClass("drop-hover");
     },
     receive : function(event,ui) {
-
-
-
-
-
       if(ui.item.hasClass("new-card") && !$(this).hasClass("new-cards")) {
         var clone = ui.item.clone();
         $(".new-cards").append(clone);
       }
-      
+
       ui.item.removeClass("new-card").addClass("card");
+
       if($(this).find(".card").length > 1){
         ui.sender.sortable("cancel");
       }
     }
-    
+
   });
 
 
@@ -151,19 +147,18 @@ function step(){
 function startBeat(measure, beat){
 
   var cards = $(".cell:nth-child("+measure+") .card");
-  
-   if(cards.length > 0) {
 
-     cards.each(function(){
+  if (cards.length > 0) {
+
+    cards.each(function(){
       var notes = $(this).find(".scale").data("notes");
       var audio = $(this).find("audio");
       var beatNotes = notes[beat-1];
       var audio = $(this).find("audio");
-       for(var i = 0; i < beatNotes.length; i++){
-         var sound = audio[i];
-        sound.play();
+
+      for (var i = 0; i < beatNotes.length; i++) {
+        audio[beatNotes[i]].play();
       }
-     });
-    
-   }
+    });
+  }
 }
