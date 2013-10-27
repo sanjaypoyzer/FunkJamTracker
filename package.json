@@ -1,0 +1,9 @@
+{
+  "name": "FunkJamTracker",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "~3.4.3",
+    "ws": "~0.4.31"
+  }
+}
