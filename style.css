@@ -10,6 +10,14 @@ body {
   margin: 0;
 }
 
+h1.title {
+  color: white;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 15px;
+}
+
 .new-cards {
   width: 200px;
   position: absolute;
@@ -17,7 +25,7 @@ body {
   background: #212B34;
   padding: 10px;
   position: absolute;
-  top: 0px;
+  top: 66px;
   bottom: 0px;
   left: 0px;
 }
@@ -77,7 +85,6 @@ body {
 .tracker .row {
   position: relative;
   height: 84px;
-
 }
 
 .tracker .cell {
@@ -88,6 +95,8 @@ body {
   width: 22%;
   border-right: solid 4px #222;
   border-bottom: solid 2px #222;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
 }
 
 .tracker .row-ui {
