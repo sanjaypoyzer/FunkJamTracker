@@ -55,19 +55,16 @@ body {
 
 .tracker {
   position: relative;
-
-
-  
 }
 
 .tracker .row {
   position: relative;
-  height: 155px;
+  height: 80px;
 }
 
 .tracker .cell {
   background: #444;
-  height: 150px;
+  height: 80px;
   float: left;
   position: relative;
   width: 19%;
