@@ -143,8 +143,8 @@ function step(){
   percent = elapsed/(beatLength * 64);
 
   playhead.css("left",.8*100*percent + "%");
-  
-  window.webkitRequestAnimationFrame(step);
+
+  window.requestAnimationFrame(step);
 };
 
 
