@@ -1,8 +1,6 @@
 
 $(document).ready(function(){
 
-
-  
   for(var k = 0; k < 6; k++ ){
     var row = $(".row:first-child").clone();
     $(".tracker").append(row);
@@ -175,6 +173,10 @@ function startBeat(measure, beat){
 
       var beatNotes = notes[beat-1];
       var audio = $(this).find("audio");
+
+      if (!beatNotes) {
+        return;
+      }
 
       for (var i = 0; i < beatNotes.length; i++) {
         if(audio){
