@@ -180,7 +180,7 @@ function startBeat(measure, beat){
 
       for (var i = 0; i < beatNotes.length; i++) {
         if(audio){
-          console.log(beatNotes[i]);
+          audio[beatNotes[i]].currentTime(0);
           audio[beatNotes[i]].play();
         }
 
