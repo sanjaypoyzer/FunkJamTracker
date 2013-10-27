@@ -15,6 +15,10 @@ body {
 
 }
 
+.new-cards .ui-sortable-placeholder {
+  visibility: visible;
+}
+
 .new-card  {
   background: #309bd8;
   padding: 12px 10px;
