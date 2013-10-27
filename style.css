@@ -105,12 +105,16 @@ h1.title {
 
 .tracker .row-ui a {
   color: white;
+  background: rgba(255,255,255,.3);
+  border-radius: 25px;
   opacity: .3;
   display: block;
   text-decoration: none;
-  padding: 5px;
+  padding: 4px 8px;
   position: relative;
-  top: 30px;
+  top: 27px;
+  left: 5px;
+  
 }
 
 .tracker .row-ui a:hover {
