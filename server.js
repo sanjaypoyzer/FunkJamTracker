@@ -11,7 +11,13 @@ var server = http.createServer(app);
 server.listen(8080);
 console.log('Listening on http://localhost:8080');
 
-var db = {};
+var db = [
+  {
+    "label" : "Trumpet",
+    "notes" : [[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0]],
+    "audioClips" : ["sounds/trumpet.mp3"]
+  }
+  ];
 
 app.post('/data', express.urlencoded(), function(req, res) {
   db = req.body;
@@ -21,6 +27,7 @@ app.post('/data', express.urlencoded(), function(req, res) {
 app.get('/data', function(req, res) {
   res.json(db);
 });
+
 
 var wss = new WebSocketServer({server: server});
 wss.on('connection', function(ws) {

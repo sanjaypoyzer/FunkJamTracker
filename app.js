@@ -1,5 +1,24 @@
 $(document).ready(function(){
 
+  jQuery.getJSON("/data",function(data){
+    for(var i = 0; i < data.length ; i++) {
+      var currCard = data[i];
+      var newCard = $("<div class='new-card'><h1></h1><div class='scale'></div><a class='delete-card' href='#'>X</a></div>");
+
+      for(var j = 0; j < currCard["audioClips"].length; j++) {
+        var audioTag =  $("<audio>");
+        audioTag.attr("src",currCard["audioClips"][j]);
+        newCard.find(".scale").append(audioTag);
+      }
+
+      newCard.find(".scale").data("notes", currCard["notes"]);
+      newCard.find("h1").text(currCard["label"]);
+
+      $(".new-cards").append(newCard);
+    }
+
+  });
+
   //Add New Row
   $(".add-row").on("click",function(){
     var row = $(".tracker .row:first-child").clone();
@@ -18,7 +37,6 @@ $(document).ready(function(){
   });
 
   startTime = new Date().getTime();
-
 
   $(".new-cards").sortable({
     connectWith : ".tracker .cell",
@@ -53,7 +71,7 @@ $(document).ready(function(){
 
   playhead = $(".playhead")
 
-  step();
+   step();
 
 });
 
@@ -116,7 +134,6 @@ function startBeat(measure, beat){
 
   var cards = $(".cell:nth-child("+measure+") .card");
   
-  console.log(beat,measure);
    if(cards.length > 0) {
 
      cards.each(function(){
