@@ -7,6 +7,7 @@ app.use(express.static(__dirname));
 app.use(express.directory(__dirname));
 app.use(function CORS(req, res, next) {
   res.set('Access-Control-Allow-Origin', '*');
+  next();
 });
 app.use(app.router);
 
