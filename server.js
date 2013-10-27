@@ -5,6 +5,10 @@ var http = require('http'),
 app.use(express.logger());
 app.use(express.static(__dirname));
 app.use(express.directory(__dirname));
+app.use(function CORS(req, res, next) {
+  res.set('Access-Control-Allow-Origin', '*');
+});
+app.use(app.router);
 
 var server = http.createServer(app);
 var port = process.env.PORT || 8080;
@@ -37,7 +41,7 @@ var db = [
 ];
 
 app.options('/data', function(req, res) {
-  res.set('Access-Control-Allow-Origin', '*');
+  res.send(200);
 });
 
 app.post('/data', express.json(), express.urlencoded(), function(req, res) {
