@@ -1,0 +1,75 @@
+<html>
+  <head>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="app.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  </head>
+
+  <body>
+
+    <div class="new-cards">
+      <div class=" new-card">
+        <h1>Sample Name</h1>
+        <a class="delete-card" href="#">X</a>
+      </div>
+      <div class=" new-card">
+        <h1>Sample Name</h1>
+        <a class="delete-card" href="#">X</a>
+      </div>
+    </div>
+
+    <div class="tracker-wrapper">
+      <div class="tracker">
+
+        <div class="row">
+          <div class="cell">
+          
+            <div class="card">
+              <h1>Bass Beat</h1>
+              <div class="scale" data-notes="[[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0]]">
+                <audio src="sounds/bassfx.mp3"></audio>
+              </div>
+            </div>
+
+          </div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="row-ui">
+            <a href="#" class="mute-row">MUTE</a>
+            <a href="#" class="delete-row">SOLO</a>
+            <a href="#" class="delete-row">X</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="cell">
+            <div class="card">
+              <h1>Trumpet</h1>
+              <div class="scale" data-notes="[[0],[],[0],[],[0],[],[0],[],[0],[],[0],[],[0],[],[0],[]]">
+                <audio src="sounds/trumpet.mp3"></audio>
+              </div>
+            </div>
+            
+          </div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="row-ui">
+            <a href="#" class="mute-row">MUTE</a>
+            <a href="#" class="delete-row">SOLO</a>
+            <a href="#" class="delete-row">X</a>
+          </div>
+        </div>
+      </div><!-- /tracker -->
+      <div class="playhead"></div>
+    </div>
+    
+    <div class="bottom-ui">
+      <a class="add-row" href="#">+ Add Row</a>
+    </div>
+    
+  
+  </body>
+</html>
