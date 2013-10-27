@@ -21,12 +21,22 @@ body {
 .new-card  {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
-  
-  background: #309bd8;
   padding: 12px 10px;
   margin-bottom: 5px;
-  color: white;
   cursor: move;
+  text-align: center;
+  background: #5E7488;
+  color: black;
+}
+
+.new-card h1 {
+  font-size: 15px;
+  font-weight: regular;
+}
+
+.new-card:hover {
+  color: white;
+  background: #309bd8;
 }
 
 .new-card h1 {
@@ -38,9 +48,6 @@ body {
   display: none;
 }
 
-.new-card h1 {
-  font-size: 15px;
-}
 
 .card h1 {
   padding: 0;
@@ -101,6 +108,7 @@ body {
   display: none;
 }
 
+
 .card {
   background: #309bd8;
   width: 100%;
@@ -112,8 +120,8 @@ body {
   cursor: move;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box; 
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
   border-bottom: solid 2px #1b75a8;
   text-shadow: 0px -1px 0px #1b75a8;
 }
