@@ -43,7 +43,9 @@ main {
     color: white;
     cursor: move;
     border-radius: 5px;
-    background: #0095DD; }
+    background: rgba(10, 10, 10, 0.8); }
+    .new-cards .new-card:active {
+      background: #0095DD; }
     .new-cards .new-card h1 {
       padding: 0;
       margin: 0;
