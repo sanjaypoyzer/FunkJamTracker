@@ -18,6 +18,10 @@ app.post('/data', express.urlencoded(), function(req, res) {
   res.send(200);
 });
 
+app.get('/data', function(req, res) {
+  res.json(db);
+});
+
 var wss = new WebSocketServer({server: server});
 wss.on('connection', function(ws) {
   var id = setInterval(function() {
