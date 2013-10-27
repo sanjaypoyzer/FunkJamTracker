@@ -1,5 +1,34 @@
 $(document).ready(function(){
 
+  jQuery.getJSON("/data",function(data){
+    for(var i = 0; i < data.length ; i++) {
+      var currCard = data[i];
+      var newCard = $("<div class='new-card'><h1></h1><div class='scale'></div><a class='delete-card' href='#'>X</a></div>");
+      for(var j = 0; j < currCard["audioClips"].length; j++) {
+        var audioTag =  $("<audio preload='auto'>");
+        audioTag.attr("src",currCard["audioClips"][j]);
+        newCard.find(".scale").append(audioTag);
+      }
+      newCard.find(".scale").data("notes", currCard["notes"]);
+      newCard.find("h1").text(currCard["label"]);
+      $(".new-cards").append(newCard);
+    }
+
+  });
+
+  $(".new-cards").sortable({
+    connectWith : ".tracker .cell",
+    helper: function(e,el) {
+           copyHelper= el.clone().insertAfter(el);
+           return el.clone();
+       },
+       stop: function() {
+           copyHelper && copyHelper.remove();
+       }
+  });
+
+
+
   //Add New Row
   $(".add-row").on("click",function(){
     var row = $(".tracker .row:first-child").clone();
@@ -8,8 +37,9 @@ $(document).ready(function(){
   });
 
   //Delete Card
-  $(".card").on("click",".delete-card", function(){
+  $(".tracker").on("click",".delete-card", function(){
     $(this).closest(".card").remove();
+    console.log("remove");
   });
 
   //Delete Card
@@ -18,14 +48,8 @@ $(document).ready(function(){
   });
 
   startTime = new Date().getTime();
-  bpm = 100;
 
-  $(".new-cards").sortable({
-    connectWith : ".tracker .cell",
-    stop : function(event,ui){
-      // ui.item.removeClass("new-card").addClass("card");
-    }
-  });
+
 
   //Sortable Card Tiles
   $(".tracker .cell").sortable({
@@ -41,35 +65,44 @@ $(document).ready(function(){
       $(this).removeClass("drop-hover");
     },
     receive : function(event,ui) {
+      if(ui.item.hasClass("new-card") && !$(this).hasClass("new-cards")) {
+        var clone = ui.item.clone();
+        $(".new-cards").append(clone);
+      }
+
       ui.item.removeClass("new-card").addClass("card");
-      
+
       if($(this).find(".card").length > 1){
         ui.sender.sortable("cancel");
       }
     }
-    
+
   });
+
+
+
 
 
   playhead = $(".playhead")
 
-  step();
+   step();
 
 });
 
 var bpm, previousTime, startTime;
-bpm = 120;
+bpm = 100;
 var beatLength = 60000 / bpm;
 var measureTime = beatLength * 16;
 
 
-var beat = 0;
+
 var elapsed = 0;
 var currentTime = 0;
 var delta = 0;
 var lastCalledTime = new Date().getTime();
 var playhead;
 
+var beat = 1;
 var measure = 1;
 var percent = 0;
 var totalElapsed;
@@ -106,28 +139,26 @@ function step(){
   percent = elapsed/(beatLength * 64);
 
   playhead.css("left",.8*100*percent + "%");
-  
-  window.webkitRequestAnimationFrame(step);
+
+  window.requestAnimationFrame(step);
 };
 
 
 function startBeat(measure, beat){
 
-  console.log(measure,beat);
+  var cards = $(".cell:nth-child("+measure+") .card");
 
-  var notes = $(".cell:nth-child("+measure+") .card .scale ").data("notes");
-  var audio = $(".cell:nth-child("+measure+") .scale audio");
-  
-  if(audio.length > 0) {
+  if (cards.length > 0) {
 
-    var beatNotes = notes[beat];
+    cards.each(function(){
+      var notes = $(this).find(".scale").data("notes");
+      var audio = $(this).find("audio");
+      var beatNotes = notes[beat-1];
+      var audio = $(this).find("audio");
 
-    audio.each(function(){
-      for(var i = 0; i < beatNotes.length; i++){
-        var sound = $(this)[beatNotes[i]];
-        sound.play();
+      for (var i = 0; i < beatNotes.length; i++) {
+        audio[beatNotes[i]].play();
       }
     });
-    
   }
 }
