@@ -18,7 +18,7 @@ $(document).ready(function(){
   });
 
   startTime = new Date().getTime();
-  bpm = 100;
+
 
   $(".new-cards").sortable({
     connectWith : ".tracker .cell",
@@ -58,18 +58,19 @@ $(document).ready(function(){
 });
 
 var bpm, previousTime, startTime;
-bpm = 120;
+bpm = 100;
 var beatLength = 60000 / bpm;
 var measureTime = beatLength * 16;
 
 
-var beat = 0;
+
 var elapsed = 0;
 var currentTime = 0;
 var delta = 0;
 var lastCalledTime = new Date().getTime();
 var playhead;
 
+var beat = 1;
 var measure = 1;
 var percent = 0;
 var totalElapsed;
@@ -113,21 +114,21 @@ function step(){
 
 function startBeat(measure, beat){
 
-  console.log(measure,beat);
-
-  var notes = $(".cell:nth-child("+measure+") .card .scale ").data("notes");
-  var audio = $(".cell:nth-child("+measure+") .scale audio");
+  var cards = $(".cell:nth-child("+measure+") .card");
   
-  if(audio.length > 0) {
+  console.log(beat,measure);
+   if(cards.length > 0) {
 
-    var beatNotes = notes[beat];
-
-    audio.each(function(){
-      for(var i = 0; i < beatNotes.length; i++){
-        var sound = $(this)[beatNotes[i]];
+     cards.each(function(){
+      var notes = $(this).find(".scale").data("notes");
+      var audio = $(this).find("audio");
+      var beatNotes = notes[beat-1];
+      var audio = $(this).find("audio");
+       for(var i = 0; i < beatNotes.length; i++){
+         var sound = audio[i];
         sound.play();
       }
-    });
+     });
     
-  }
+   }
 }
